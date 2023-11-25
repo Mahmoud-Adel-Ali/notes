@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes/views/notesView.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,20 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-      
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const NotesApp(),
+      theme: ThemeData.dark(),
+      home: const NotesView(),
     );
-  }
-}
-class NotesApp extends StatelessWidget {
-  const NotesApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
