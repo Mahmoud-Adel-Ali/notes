@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:notes/views/widget/notes_view_body.dart';
 
@@ -8,12 +6,15 @@ class NotesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Padding(
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add,size: 30,),
+      ),
+      body: const Padding(
         padding: EdgeInsets.all(12.0),
         child: NotesViewBody(),
       ),
-      );
+    );
   }
 }
- 

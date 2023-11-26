@@ -9,7 +9,7 @@ class NotesViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        SizedBox(height:50),
+        SizedBox(height:25),
         CustomAppBar(),
         // NoteItemCard(),
         Expanded(child: NotesListView()),
