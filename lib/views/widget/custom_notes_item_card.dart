@@ -6,8 +6,8 @@ class NoteItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 10),
-      padding:  EdgeInsets.fromLTRB(16, 24, 0, 16),
+      margin: const EdgeInsets.only(bottom: 10),
+      padding:  const EdgeInsets.fromLTRB(16, 24, 0, 16),
       decoration: BoxDecoration(
         color: Colors.yellow.withOpacity(0.9),
         borderRadius: BorderRadius.circular(12),
