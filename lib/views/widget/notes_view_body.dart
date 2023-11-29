@@ -7,10 +7,10 @@ class NotesViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return  const Column(
       children: [
         SizedBox(height:25),
-        CustomAppBar(),
+        CustomAppBar(title: 'Notes', icon: Icons.search,),
         // NoteItemCard(),
         Expanded(child: NotesListView()),
       ],
