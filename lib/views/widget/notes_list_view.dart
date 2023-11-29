@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:notes/views/edit_note_view.dart';
 import 'package:notes/views/widget/custom_notes_item_card.dart';
-import 'package:notes/views/widget/edit_view_body.dart';
 
 class NotesListView extends StatelessWidget {
   const NotesListView({super.key});
@@ -11,7 +11,7 @@ class NotesListView extends StatelessWidget {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return const EditNoteViewBody();
+            return const EditNoteView();
           },
         ));
       },

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:notes/views/widget/edit_view_body.dart';
 
@@ -6,6 +7,12 @@ class EditNoteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const EditNoteViewBody();
+    return  const Scaffold(
+      
+      body: Padding(
+        padding: EdgeInsets.all(12.0),
+        child: EditNoteViewBody(),
+      ),
+    );
   }
 }
