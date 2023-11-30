@@ -6,7 +6,7 @@ import 'package:notes/views/notesView.dart';
 void main() async {
   //  intialize flutter
   await Hive.initFlutter();
-  // open box to save data
+  // open box to save data 
   await Hive.openBox(kNotesBox);
   runApp(const MyApp());
 }
