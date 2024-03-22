@@ -3,7 +3,7 @@ import 'package:notes/constant.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
-      {super.key, required this.hint, required this.maxLine, this.onSaved});
+      {super.key, required this.hint, this.maxLine = 1, this.onSaved});
   final String hint;
   final int maxLine;
   //
@@ -13,7 +13,8 @@ class CustomTextField extends StatelessWidget {
     return TextFormField(
       onSaved: onSaved,
       validator: (value) {
-        if (value?.isEmpty ?? true) {// mean if value == null take (true) ; if value != null then true
+        if (value?.isEmpty ?? true) {
+          // mean if value == null take (true) ; if value != null then true
           return "required this textFeild";
         } else {
           return null;

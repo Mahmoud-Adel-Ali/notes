@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
-//
+// to create this page content run (flutter packages pub run build_runner build) 
+// in terminal after write ( part 'note_model.g.dart';) in this page
 part 'note_model.g.dart';
 //
 @HiveType(typeId: 0)
