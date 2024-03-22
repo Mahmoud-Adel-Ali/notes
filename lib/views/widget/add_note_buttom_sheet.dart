@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:notes/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes/views/widget/custom_buttom.dart';
 import 'package:notes/views/widget/custom_text_field.dart';
 
@@ -11,7 +14,19 @@ class AddNoteButtomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(16),
-      child: AddNoteForm(),
+      child: BlocConsumer(
+        listener: (context, state) {
+          if (state is AddNoteFailure) {
+            print("Faile : ${state.errMessage}");
+          }
+          if (state is AddNoteSuccess) {
+            Navigator.pop(context);
+          }
+        },
+        builder: (context, state) => ModalProgressHUD(
+            inAsyncCall: state is AddNoteLoading ? true : false,
+            child: AddNoteForm()),
+      ),
     );
   }
 }
