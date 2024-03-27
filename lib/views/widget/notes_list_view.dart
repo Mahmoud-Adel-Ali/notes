@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes/cubits/notes_cubit/notes_cubit.dart';
+import 'package:notes/cubits/notes_cubit/notes_state.dart';
+import 'package:notes/model/note_model.dart';
 import 'package:notes/views/edit_note_view.dart';
 import 'package:notes/views/widget/custom_notes_item_card.dart';
 
@@ -7,24 +11,28 @@ class NotesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) {
-            return const EditNoteView();
-          },
-        ));
+    return GestureDetector(onTap: () {
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) {
+          return const EditNoteView();
+        },
+      ));
+    }, child: BlocBuilder<NotesCubit, NotesState>(
+      builder: (context, state) {
+        BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+        List<NoteModel> notes =
+            BlocProvider.of<NotesCubit>(context).notes ?? [];
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: ListView.builder(
+            padding: EdgeInsets.zero,
+            itemCount: notes.length,
+            itemBuilder: (context, index) {
+              return  NoteItemCard(note: notes[index],);
+            },
+          ),
+        );
       },
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          padding: EdgeInsets.zero,
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return const NoteItemCard();
-          },
-        ),
-      ),
-    );
+    ));
   }
 }
