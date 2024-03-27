@@ -8,12 +8,12 @@ class NoteItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         Navigator.push(context, MaterialPageRoute(
-        builder: (context) {
-          return const EditNoteView();
-        },
-      ));
+          builder: (context) {
+            return const EditNoteView();
+          },
+        ));
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 10),
@@ -39,7 +39,9 @@ class NoteItemCard extends StatelessWidget {
                 ),
               ),
               trailing: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    note.delete();
+                  },
                   icon: const Icon(
                     Icons.delete,
                     color: Colors.black,
