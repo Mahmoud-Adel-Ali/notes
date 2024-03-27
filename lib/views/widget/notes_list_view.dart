@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes/cubits/notes_cubit/notes_state.dart';
 import 'package:notes/model/note_model.dart';
-import 'package:notes/views/edit_note_view.dart';
 import 'package:notes/views/widget/custom_notes_item_card.dart';
 
 class NotesListView extends StatelessWidget {
@@ -11,13 +10,7 @@ class NotesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(onTap: () {
-      Navigator.push(context, MaterialPageRoute(
-        builder: (context) {
-          return const EditNoteView();
-        },
-      ));
-    }, child: BlocBuilder<NotesCubit, NotesState>(
+    return BlocBuilder<NotesCubit, NotesState>(
       builder: (context, state) {
         BlocProvider.of<NotesCubit>(context).fetchAllNotes();
         List<NoteModel> notes =
@@ -33,6 +26,6 @@ class NotesListView extends StatelessWidget {
           ),
         );
       },
-    ));
+    );
   }
 }
