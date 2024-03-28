@@ -35,14 +35,14 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
             onChanged: (text) {
               title = text;
             },
-            hint: "Title",
+            hint: widget.note.title,
             maxLine: 1),
         const SizedBox(height: 25),
         CustomTextField(
             onChanged: (text) {
               content = text;
             },
-            hint: "Content",
+            hint: widget.note.subTitle,
             maxLine: 5),
       ],
     );
