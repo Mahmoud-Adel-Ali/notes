@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:notes/constant.dart';
 import 'package:notes/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes/model/note_model.dart';
 import 'package:notes/views/widget/custom_buttom.dart';
@@ -21,6 +22,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   //
   String? title, subTitle;
+  int currentColorIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -58,7 +60,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     title: title!,
                     subTitle: subTitle!,
                     date: formattedDate,
-                    color: Colors.blue.value,
+                    color: myColors[currentColorIndex],
                   );
                   BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
                 } else {
