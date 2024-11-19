@@ -5,7 +5,7 @@ import 'package:notes/constant.dart';
 import 'package:notes/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes/model/note_model.dart';
 import 'package:notes/simple_bloc_observer.dart';
-import 'package:notes/views/notesView.dart';
+import 'package:notes/views/notes_view.dart';
 
 void main() async {
   Hive.registerAdapter(NoteModelAdapter());
