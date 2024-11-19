@@ -13,7 +13,9 @@ class NoteItemCard extends StatelessWidget {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return  EditNoteView(note: note,);
+            return EditNoteView(
+              note: note,
+            );
           },
         ));
       },
@@ -30,14 +32,14 @@ class NoteItemCard extends StatelessWidget {
             ListTile(
               title: Text(
                 note.title,
-                style: const TextStyle(fontSize: 26, color: Colors.black),
+                style: const TextStyle(fontSize: 26, color: Colors.white),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 16),
                 child: Text(
                   note.subTitle,
                   style: TextStyle(
-                      fontSize: 18, color: Colors.black.withOpacity(0.5)),
+                      fontSize: 18, color: Colors.white.withOpacity(0.5)),
                 ),
               ),
               trailing: IconButton(
@@ -47,7 +49,7 @@ class NoteItemCard extends StatelessWidget {
                   },
                   icon: const Icon(
                     Icons.delete,
-                    color: Colors.black,
+                    color: Colors.white,
                     size: 25,
                   )),
             ),
@@ -55,9 +57,9 @@ class NoteItemCard extends StatelessWidget {
               padding: const EdgeInsets.only(right: 24.0),
               child: Text(
                 note.date,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 15,
-                  color: Color.fromARGB(195, 52, 25, 0),
+                  color: Colors.white.withOpacity(0.5),
                 ),
               ),
             ),

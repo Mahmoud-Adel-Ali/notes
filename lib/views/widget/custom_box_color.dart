@@ -16,13 +16,17 @@ class CustomBoxColor extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
+        height: 40,
+        width: 40,
+        margin: const EdgeInsets.all(5),
         decoration: BoxDecoration(
-            color: Color(color),
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: Colors.yellow,
-              width: 1,
-            )),
+          color: Color(color),
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: isActive ? Colors.yellow : Colors.transparent,
+            width: 3,
+          ),
+        ),
       ),
     );
   }
