@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:notes/constant.dart';
 import 'package:notes/model/note_model.dart';
 import 'package:notes/views/widget/custom_appbar.dart';
+import 'package:notes/views/widget/custom_box_color.dart';
 import 'package:notes/views/widget/custom_text_field.dart';
 
 class EditNoteViewBody extends StatefulWidget {
@@ -15,11 +17,14 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
   void onPressed() {
     widget.note.title = title ?? widget.note.title;
     widget.note.subTitle = content ?? widget.note.subTitle;
+    widget.note.color = color ?? widget.note.color;
     widget.note.save();
     Navigator.pop(context);
   }
 
   String? title, content;
+  int currentColorIndex = 0;
+  int? color;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -44,6 +49,25 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
             },
             hint: widget.note.subTitle,
             maxLine: 5),
+        const SizedBox(height: 32),
+        SizedBox(
+          height: 50,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: myColors.length,
+            itemBuilder: (context, index) {
+              return CustomBoxColor(
+                onTap: () {
+                  currentColorIndex = index;
+                  color = myColors[index];
+                  setState(() {});
+                },
+                color: myColors[index],
+                isActive: currentColorIndex == index,
+              );
+            },
+          ),
+        ),
       ],
     );
   }
