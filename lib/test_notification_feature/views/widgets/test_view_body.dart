@@ -11,19 +11,24 @@ class TestViewBody extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          MyButton(
-            onPressed: () {},
-            title: "Basic Notification",
+          const Text(
+            "Notifications..",
+            style: TextStyle(fontSize: 40),
           ),
           const SizedBox(height: 40),
           MyButton(
             onPressed: () {},
-            title: "Repeated Notification",
+            title: "Basic",
           ),
           const SizedBox(height: 40),
           MyButton(
             onPressed: () {},
-            title: "Scheduled Notification",
+            title: "Repeated",
+          ),
+          const SizedBox(height: 40),
+          MyButton(
+            onPressed: () {},
+            title: "Scheduled",
           ),
           const SizedBox(height: 40),
           IconButton(

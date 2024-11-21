@@ -11,15 +11,19 @@ class MyButton extends StatelessWidget {
       height: 60,
       color: Colors.indigo.shade900,
       onPressed: onPressed ?? () {},
-      child: Row(
-        children: [
-          const Icon(Icons.notifications_active),
-          const SizedBox(width: 5),
-          Text(
-            title,
-            style: const TextStyle(fontSize: 25),
-          ),
-        ],
+      child: ListTile(
+        contentPadding: EdgeInsets.zero,
+        onTap: onPressed,
+        title: Text(
+          title,
+          style: const TextStyle(fontSize: 25),
+          overflow: TextOverflow.clip,
+        ),
+        leading: const Icon(Icons.notifications_active),
+        trailing: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.cancel, color: Colors.red),
+        ),
       ),
     );
   }
