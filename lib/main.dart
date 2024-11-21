@@ -5,9 +5,13 @@ import 'package:notes/constant.dart';
 import 'package:notes/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes/model/note_model.dart';
 import 'package:notes/simple_bloc_observer.dart';
+import 'package:notes/test_notification_feature/services/local_notificaion_service.dart';
 import 'package:notes/test_notification_feature/views/test_view.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // init fluttr local notifications
+  await LocalNotificaionService.init();
   Hive.registerAdapter(NoteModelAdapter());
   Bloc.observer = SimpleBlocObserver();
   //  intialize flutter
