@@ -21,16 +21,19 @@ class TestViewBody extends StatelessWidget {
             onPressed: () {
               LocalNotificaionService.basiceNotification();
             },
+            onCancel: () {},
             title: "Basic",
           ),
           const SizedBox(height: 40),
           MyButton(
             onPressed: () {},
+            onCancel: () {},
             title: "Repeated",
           ),
           const SizedBox(height: 40),
           MyButton(
             onPressed: () {},
+            onCancel: () {},
             title: "Scheduled",
           ),
           const SizedBox(height: 40),

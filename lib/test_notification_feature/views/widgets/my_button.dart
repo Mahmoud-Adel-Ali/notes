@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
-  const MyButton({super.key, required this.title, this.onPressed});
+  const MyButton(
+      {super.key, required this.title, this.onPressed, this.onCancel});
   final String title;
   final Function()? onPressed;
+  final Function()? onCancel;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
@@ -21,7 +23,7 @@ class MyButton extends StatelessWidget {
         ),
         leading: const Icon(Icons.notifications_active),
         trailing: IconButton(
-          onPressed: () {},
+          onPressed: onCancel,
           icon: const Icon(Icons.cancel, color: Colors.red),
         ),
       ),
