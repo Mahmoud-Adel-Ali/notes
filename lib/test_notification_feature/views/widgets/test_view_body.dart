@@ -21,13 +21,21 @@ class TestViewBody extends StatelessWidget {
             onPressed: () {
               LocalNotificaionService.basiceNotification();
             },
-            onCancel: () {},
+            onCancel: () {
+              //base notification
+              cancelBasicNotification();
+            },
             title: "Basic",
           ),
           const SizedBox(height: 40),
           MyButton(
-            onPressed: () {},
-            onCancel: () {},
+            onPressed: () {
+              LocalNotificaionService.repeatedNotification();
+            },
+            onCancel: () {
+              //repeated notification
+              cancelRepeatedNotification();
+            },
             title: "Repeated",
           ),
           const SizedBox(height: 40),
@@ -38,11 +46,25 @@ class TestViewBody extends StatelessWidget {
           ),
           const SizedBox(height: 40),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              //base notification
+              cancelBasicNotification();
+              //repeated notification
+              cancelRepeatedNotification();
+            },
             icon: const Text("Cancel all"),
           ),
         ],
       ),
     );
+  }
+
+  void cancelRepeatedNotification() {
+    LocalNotificaionService.cancelNotification(1);
+  }
+
+  void cancelBasicNotification() {
+    //base notification
+    LocalNotificaionService.cancelNotification(0);
   }
 }

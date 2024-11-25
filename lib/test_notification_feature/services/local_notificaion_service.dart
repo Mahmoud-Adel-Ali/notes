@@ -32,23 +32,23 @@ abstract class LocalNotificaionService {
   }
 
   // 1. custom notification
-  static Future customNotification() async {
-    NotificationDetails details = const NotificationDetails(
-      android: AndroidNotificationDetails(
-        'id 2',
-        'channelName',
-        priority: Priority.high,
-        importance: Importance.max,
-      ),
-    );
-    flutterLocalNotificationsPlugin.show(
-      1,
-      "Custom Notification",
-      'body', // some content data
-      details,
-      payload: "payload data", //  all content data
-    );
-  }
+  // static Future customNotification() async {
+  //   NotificationDetails details = const NotificationDetails(
+  //     android: AndroidNotificationDetails(
+  //       'id 0',
+  //       'channelName',
+  //       priority: Priority.high,
+  //       importance: Importance.max,
+  //     ),
+  //   );
+  //   flutterLocalNotificationsPlugin.show(
+  //     0,
+  //     "Custom Notification",
+  //     'body', // some content data
+  //     details,
+  //     payload: "payload data", //  all content data
+  //   );
+  // }
 
   // 2. basice notification
   static Future basiceNotification() async {
@@ -61,7 +61,7 @@ abstract class LocalNotificaionService {
       ),
     );
     flutterLocalNotificationsPlugin.show(
-      1,
+      0,
       "Basice Notification",
       'body', // some content data
       details,
