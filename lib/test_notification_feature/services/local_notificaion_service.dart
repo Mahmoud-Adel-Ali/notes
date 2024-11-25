@@ -26,6 +26,30 @@ abstract class LocalNotificaionService {
     print("Notification received in background: ${response.payload}");
   }
 
+  //cancel Notification
+  static Future cancelNotification(int notificationId) async {
+    await flutterLocalNotificationsPlugin.cancel(notificationId);
+  }
+
+  // 1. custom notification
+  static Future customNotification() async {
+    NotificationDetails details = const NotificationDetails(
+      android: AndroidNotificationDetails(
+        'id 2',
+        'channelName',
+        priority: Priority.high,
+        importance: Importance.max,
+      ),
+    );
+    flutterLocalNotificationsPlugin.show(
+      1,
+      "Custom Notification",
+      'body', // some content data
+      details,
+      payload: "payload data", //  all content data
+    );
+  }
+
   // 2. basice notification
   static Future basiceNotification() async {
     NotificationDetails details = const NotificationDetails(
@@ -37,10 +61,33 @@ abstract class LocalNotificaionService {
       ),
     );
     flutterLocalNotificationsPlugin.show(
-      0,
+      1,
       "Basice Notification",
       'body', // some content data
       details,
+      payload: "payload data", //  all content data
+    );
+  }
+
+  // 3. repeated notification
+  static Future repeatedNotification() async {
+    NotificationDetails details = const NotificationDetails(
+      android: AndroidNotificationDetails(
+        'id 1',
+        'channelName',
+        priority: Priority.high,
+        importance: Importance.max,
+      ),
+    );
+    RepeatInterval repeatInterval = RepeatInterval.everyMinute;
+    AndroidScheduleMode androidScheduleMode = AndroidScheduleMode.alarmClock;
+    flutterLocalNotificationsPlugin.periodicallyShow(
+      1,
+      "Repeated Notification",
+      'body', // some content data
+      repeatInterval,
+      details,
+      androidScheduleMode: androidScheduleMode,
       payload: "payload data", //  all content data
     );
   }
