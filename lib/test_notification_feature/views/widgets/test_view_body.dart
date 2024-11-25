@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes/test_notification_feature/services/local_notificaion_service.dart';
 import 'package:notes/test_notification_feature/views/widgets/my_button.dart';
 
 class TestViewBody extends StatelessWidget {
@@ -17,7 +18,9 @@ class TestViewBody extends StatelessWidget {
           ),
           const SizedBox(height: 40),
           MyButton(
-            onPressed: () {},
+            onPressed: () {
+              LocalNotificaionService.basiceNotification();
+            },
             title: "Basic",
           ),
           const SizedBox(height: 40),

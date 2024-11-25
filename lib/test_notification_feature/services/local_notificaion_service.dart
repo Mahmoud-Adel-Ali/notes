@@ -13,8 +13,35 @@ abstract class LocalNotificaionService {
     );
     await flutterLocalNotificationsPlugin.initialize(
       settings,
-      onDidReceiveBackgroundNotificationResponse: (details) {},
-      onDidReceiveNotificationResponse: (details) {},
+      onDidReceiveBackgroundNotificationResponse: onTap,
+      onDidReceiveNotificationResponse: onTap,
+    );
+  }
+
+  static onTap(NotificationResponse notificationResponse) {}
+
+  // Ensure this is a top-level function
+  void backgroundHandler(NotificationResponse response) {
+    // Handle the background notification here
+    print("Notification received in background: ${response.payload}");
+  }
+
+  // 2. basice notification
+  static Future basiceNotification() async {
+    NotificationDetails details = const NotificationDetails(
+      android: AndroidNotificationDetails(
+        'id 0',
+        'channelName',
+        priority: Priority.high,
+        importance: Importance.max,
+      ),
+    );
+    flutterLocalNotificationsPlugin.show(
+      0,
+      "Basice Notification",
+      'body', // some content data
+      details,
+      payload: "payload data", //  all content data
     );
   }
 }
