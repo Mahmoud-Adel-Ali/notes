@@ -40,8 +40,12 @@ class TestViewBody extends StatelessWidget {
           ),
           const SizedBox(height: 40),
           MyButton(
-            onPressed: () {},
-            onCancel: () {},
+            onPressed: () {
+              LocalNotificaionService.scheduledNotification();
+            },
+            onCancel: () {
+              cancelScheduledNotification();
+            },
             title: "Scheduled",
           ),
           const SizedBox(height: 40),
@@ -51,12 +55,18 @@ class TestViewBody extends StatelessWidget {
               cancelBasicNotification();
               //repeated notification
               cancelRepeatedNotification();
+              //scheduled notification
+              cancelScheduledNotification();
             },
             icon: const Text("Cancel all"),
           ),
         ],
       ),
     );
+  }
+
+  void cancelScheduledNotification() {
+    LocalNotificaionService.cancelNotification(2);
   }
 
   void cancelRepeatedNotification() {
