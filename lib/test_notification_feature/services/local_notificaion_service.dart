@@ -91,6 +91,30 @@ abstract class LocalNotificaionService {
       payload: "payload data", //  all content data
     );
   }
+
+  // 4. scheduled notification
+  static Future scheduledNotification() async {
+    DateTime dateTime = DateTime.now().add(const Duration(seconds: 10));
+    NotificationDetails details = const NotificationDetails(
+      android: AndroidNotificationDetails(
+        'id 2',
+        'channelName',
+        priority: Priority.high,
+        importance: Importance.max,
+      ),
+    );
+    flutterLocalNotificationsPlugin.zonedSchedule(
+      2,
+      "Scheduled Notification",
+      'body',
+      dateTime.timeZoneOffset,
+      details,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
+      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+      payload: "payload data", //  all content data
+    );
+  }
 }
 
 
