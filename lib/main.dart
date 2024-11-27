@@ -10,14 +10,13 @@ import 'package:notes/test_notification_feature/views/test_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // init fluttr local notifications
-  await LocalNotificaionService.init();
   Hive.registerAdapter(NoteModelAdapter());
   Bloc.observer = SimpleBlocObserver();
-  //  intialize flutter
-  await Hive.initFlutter();
-  // open box to save data
-  await Hive.openBox<NoteModel>(kNotesBox);
+  Future.wait([
+    LocalNotificaionService.init(),
+    Hive.initFlutter(),
+    Hive.openBox<NoteModel>(kNotesBox),
+  ]);
   runApp(const MyApp());
 }
 
