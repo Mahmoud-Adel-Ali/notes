@@ -108,8 +108,8 @@ abstract class LocalNotificaionService {
     final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
     tz.initializeTimeZones();
     tz.setLocalLocation(tz.getLocation(currentTimeZone));
-    // var tzTime = tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5));
-    var tzTime = tz.TZDateTime(tz.local, 2024, 11, 26, 13, 55);
+    var tzTime = tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5));
+    // var tzTime = tz.TZDateTime(tz.local, 2024, 11, 26, 13, 55);
     flutterLocalNotificationsPlugin.zonedSchedule(
       2,
       "Scheduled Notification",
