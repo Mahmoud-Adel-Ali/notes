@@ -1,9 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:notes/test_notification_feature/services/local_notificaion_service.dart';
 import 'package:notes/test_notification_feature/views/widgets/my_button.dart';
 
-class TestViewBody extends StatelessWidget {
+class TestViewBody extends StatefulWidget {
   const TestViewBody({super.key});
+
+  @override
+  State<TestViewBody> createState() => _TestViewBodyState();
+}
+
+class _TestViewBodyState extends State<TestViewBody> {
+  void listenStreamNotification() {
+    LocalNotificaionService.streamController.stream.listen(
+      (notificationResponse) {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => NotificationDetailsView(
+                notificationResponse: notificationResponse)));
+      },
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    listenStreamNotification();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,5 +98,30 @@ class TestViewBody extends StatelessWidget {
   void cancelBasicNotification() {
     //base notification
     LocalNotificaionService.cancelNotification(0);
+  }
+}
+
+class NotificationDetailsView extends StatelessWidget {
+  const NotificationDetailsView(
+      {super.key, required this.notificationResponse});
+  final NotificationResponse notificationResponse;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Notification Details'),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            Text(notificationResponse.id!.toString()),
+            const SizedBox(height: 25),
+            Text(notificationResponse.actionId.toString()),
+            const SizedBox(height: 25),
+            Text(notificationResponse.payload.toString()),
+          ],
+        ),
+      ),
+    );
   }
 }

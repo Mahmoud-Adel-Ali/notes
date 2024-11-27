@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -21,7 +23,11 @@ abstract class LocalNotificaionService {
     );
   }
 
-  static onTap(NotificationResponse notificationResponse) {}
+  static StreamController<NotificationResponse> streamController =
+      StreamController();
+  static onTap(NotificationResponse notificationResponse) {
+    streamController.add(notificationResponse);
+  }
 
   // Ensure this is a top-level function
   void backgroundHandler(NotificationResponse response) {
@@ -71,7 +77,7 @@ abstract class LocalNotificaionService {
       "Basice Notification",
       'body', // some content data
       details,
-      payload: "payload data", //  all content data
+      payload: "Basice Notification payload data", //  all content data
     );
   }
 
@@ -94,7 +100,7 @@ abstract class LocalNotificaionService {
       repeatInterval,
       details,
       androidScheduleMode: androidScheduleMode,
-      payload: "payload data", //  all content data
+      payload: "Repeated Notification payload data", //  all content data
     );
   }
 
@@ -122,7 +128,7 @@ abstract class LocalNotificaionService {
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
       androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
-      payload: "payload data", //  all content data
+      payload: "Scheduled Notification payload data", //  all content data
     );
   }
 }
