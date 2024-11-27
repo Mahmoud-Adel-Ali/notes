@@ -55,12 +55,15 @@ abstract class LocalNotificaionService {
 
   // 2. basice notification
   static Future basiceNotification() async {
-    NotificationDetails details = const NotificationDetails(
+    AndroidNotificationSound sound = RawResourceAndroidNotificationSound(
+        'notification_sound.mp3'.split('.').first);
+    NotificationDetails details = NotificationDetails(
       android: AndroidNotificationDetails(
         'id 0',
         'channelName',
         priority: Priority.high,
         importance: Importance.max,
+        sound: sound,
       ),
     );
     flutterLocalNotificationsPlugin.show(
@@ -129,3 +132,7 @@ abstract class LocalNotificaionService {
 // 2. basice notification
 // 3. repeated notification
 // 4. scheduled notification
+// 5. custom Sound 
+// 6. on Tab
+// 7. daly notification at specific time 
+// 5. Real example on Notes app
