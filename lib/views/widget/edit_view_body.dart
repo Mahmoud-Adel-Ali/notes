@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/constant.dart';
+import 'package:notes/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes/model/note_model.dart';
 import 'package:notes/views/widget/custom_appbar.dart';
 import 'package:notes/views/widget/custom_box_color.dart';
@@ -15,16 +17,29 @@ class EditNoteViewBody extends StatefulWidget {
 
 class _EditNoteViewBodyState extends State<EditNoteViewBody> {
   void onPressed() {
-    widget.note.title = title ?? widget.note.title;
-    widget.note.subTitle = content ?? widget.note.subTitle;
-    widget.note.color = color ?? widget.note.color;
+    widget.note.title = title ?? titleController.text;
+    widget.note.subTitle = content ?? contentController.text;
+    widget.note.color = myColors[currentColorIndex];
     widget.note.save();
     Navigator.pop(context);
+    context.read<NotesCubit>().fetchAllNotes();
   }
 
   String? title, content;
   int currentColorIndex = 0;
-  int? color;
+  late TextEditingController titleController, contentController;
+  @override
+  void initState() {
+    super.initState();
+    titleController = TextEditingController(text: widget.note.title);
+    contentController = TextEditingController(text: widget.note.subTitle);
+    for (int i = 0; i < myColors.length; i++) {
+      if (widget.note.color == myColors[i]) {
+        currentColorIndex = i;
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -37,18 +52,22 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
         ),
         const SizedBox(height: 25),
         CustomTextField(
-            onChanged: (text) {
-              title = text;
-            },
-            hint: widget.note.title,
-            maxLine: 1),
+          controller: titleController,
+          hint: widget.note.title,
+          maxLine: 1,
+          onChanged: (val) {
+            title = val;
+          },
+        ),
         const SizedBox(height: 25),
         CustomTextField(
-            onChanged: (text) {
-              content = text;
-            },
-            hint: widget.note.subTitle,
-            maxLine: 5),
+          controller: contentController,
+          hint: widget.note.subTitle,
+          maxLine: 5,
+          onChanged: (val) {
+            content = val;
+          },
+        ),
         const SizedBox(height: 32),
         SizedBox(
           height: 50,
@@ -59,7 +78,6 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
               return CustomBoxColor(
                 onTap: () {
                   currentColorIndex = index;
-                  color = myColors[index];
                   setState(() {});
                 },
                 color: myColors[index],
