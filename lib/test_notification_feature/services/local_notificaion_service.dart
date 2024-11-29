@@ -133,14 +133,54 @@ abstract class LocalNotificaionService {
       payload: "Scheduled Notification payload data", //  all content data
     );
   }
-}
 
+  // 5. daily scheduled notification
+  static Future dailyScheduledNotification() async {
+    NotificationDetails details = const NotificationDetails(
+      android: AndroidNotificationDetails(
+        'id 3',
+        'channelName',
+        priority: Priority.high,
+        importance: Importance.max,
+      ),
+    );
+    final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
+    tz.initializeTimeZones();
+    tz.setLocalLocation(tz.getLocation(currentTimeZone));
+    var currentTime = tz.TZDateTime.now(tz.local);
+    var scheduleTime = tz.TZDateTime(
+      tz.local,
+      currentTime.year,
+      currentTime.month,
+      currentTime.day,
+      currentTime.hour,
+      15, //minutes
+    );
+    log(scheduleTime.toString());
+    log(currentTime.toString());
+    // check schedule is after the currentime
+    if (scheduleTime.isBefore(currentTime)) {
+      scheduleTime = scheduleTime.add(const Duration(hours: 1));
+    }
+    flutterLocalNotificationsPlugin.zonedSchedule(
+      3,
+      "Daily Scheduled Notification",
+      'body',
+      scheduleTime,
+      details,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
+      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+      payload: "Daily Scheduled Notification payload data", //  all content data
+    );
+  }
+}
 
 // 1. setup package (done)
 // 2. basice notification
 // 3. repeated notification
 // 4. scheduled notification
-// 5. custom Sound 
+// 5. custom Sound
 // 6. on Tab
-// 7. daly notification at specific time 
+// 7. daly notification at specific time
 // 5. Real example on Notes app
