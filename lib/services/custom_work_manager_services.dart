@@ -7,13 +7,13 @@ class CustomWorkManagerServices {
     await Workmanager().registerPeriodicTask(
       'id1',
       'My note app notifications .',
-      frequency: const Duration(days: 1),
+      frequency: const Duration(hours: 12),
     );
   }
 
   //init work manager service
   Future<void> init() async {
-    await Workmanager().initialize(actionTask);
+    await Workmanager().initialize(actionTask, isInDebugMode: true);
     registerMyTask();
   }
 

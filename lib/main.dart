@@ -26,7 +26,7 @@ void main() async {
   ]);
   runApp(const MyApp());
 }
-//1. fix bugs
+//1. fix bugs [done]
 //2. setup notificationans and workmanager [done]
 //3. schedule notification
 //4. reapeted notificatoin daily [done]
