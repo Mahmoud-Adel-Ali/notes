@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
@@ -10,6 +11,7 @@ abstract class CustomLocalNotificaionService {
       FlutterLocalNotificationsPlugin();
   //initialize package
   static Future<void> init() async {
+    log('init custom local notification services');
     InitializationSettings settings = const InitializationSettings(
       android: AndroidInitializationSettings(
         "@mipmap/ic_launcher",
@@ -134,6 +136,7 @@ abstract class CustomLocalNotificaionService {
 
   // 5. daily scheduled notification
   static Future dailyScheduledNotification() async {
+    log('daily scheduled Notification ');
     AndroidNotificationSound sound = RawResourceAndroidNotificationSound(
         'notification_sound.mp3'.split('.').first);
     NotificationDetails details = NotificationDetails(
@@ -159,6 +162,8 @@ abstract class CustomLocalNotificaionService {
     if (scheduleTime.isBefore(currentTime)) {
       scheduleTime = scheduleTime.add(const Duration(days: 1));
     }
+    log(currentTime.toString());
+    log(scheduleTime.toString());
     flutterLocalNotificationsPlugin.zonedSchedule(
       3,
       'ايه الاخبار ي صديقي',
