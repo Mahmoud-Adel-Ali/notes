@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:notes/services/custom_local_notificaion_service.dart';
 import 'package:workmanager/workmanager.dart';
 

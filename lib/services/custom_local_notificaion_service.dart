@@ -34,7 +34,7 @@ abstract class CustomLocalNotificaionService {
   // Ensure this is a top-level function
   void backgroundHandler(NotificationResponse response) {
     // Handle the background notification here
-    print("Notification received in background: ${response.payload}");
+    log("Notification received in background: ${response.payload}");
   }
 
   //cancel Notification

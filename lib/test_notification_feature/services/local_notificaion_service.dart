@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
@@ -32,7 +33,7 @@ abstract class LocalNotificaionService {
   // Ensure this is a top-level function
   void backgroundHandler(NotificationResponse response) {
     // Handle the background notification here
-    print("Notification received in background: ${response.payload}");
+    log("Notification received in background: ${response.payload}");
   }
 
   //cancel Notification
