@@ -14,6 +14,7 @@ class _TestViewBodyState extends State<TestViewBody> {
   void listenStreamNotification() {
     LocalNotificaionService.streamController.stream.listen(
       (notificationResponse) {
+        // ignore: use_build_context_synchronously
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => NotificationDetailsView(
                 notificationResponse: notificationResponse)));
