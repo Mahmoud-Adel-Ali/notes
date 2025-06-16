@@ -11,30 +11,30 @@ class WorkManagerServices {
     await Workmanager().registerPeriodicTask(
       'id1',
       'show simple notification',
-      frequency: const Duration(days: 1),
+      frequency: const Duration(hours: 12),
     );
   }
 
   //init work manager service
   Future<void> init() async {
-    await Workmanager().initialize(actionTask);
+    await Workmanager().initialize(actionTask, isInDebugMode: true);
     registerMyTask();
   }
 
   void cancelTask(String id) {
     Workmanager().cancelAll();
   }
-}
 
-@pragma('vm-entry-point')
-void actionTask() {
-  //show notification
-  Workmanager().executeTask(
-    (taskName, inputData) {
-      LocalNotificaionService.dailyScheduledNotification();
-      return Future.value(true);
-    },
-  );
+  @pragma('vm-entry-point')
+  void actionTask() {
+    //show notification
+    Workmanager().executeTask(
+      (taskName, inputData) {
+        LocalNotificaionService.dailyScheduledNotification();
+        return Future.value(true);
+      },
+    );
+  }
 }
 
 //1.schedule notification at 9 pm.

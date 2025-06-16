@@ -155,7 +155,7 @@ abstract class LocalNotificaionService {
       currentTime.year,
       currentTime.month,
       currentTime.day,
-      22,
+      22,// means 10 pm
     );
     if (scheduleTime.isBefore(currentTime)) {
       scheduleTime = scheduleTime.add(const Duration(days: 1));
