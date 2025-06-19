@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
-import 'package:flutter_timezone/flutter_timezone.dart';
 
 abstract class LocalNotificaionService {
   static FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -155,14 +155,16 @@ abstract class LocalNotificaionService {
       currentTime.year,
       currentTime.month,
       currentTime.day,
-      22,// means 10 pm
+      // 22,// means 10 pm
+      currentTime.hour,
+      45,
     );
     if (scheduleTime.isBefore(currentTime)) {
-      scheduleTime = scheduleTime.add(const Duration(days: 1));
+      scheduleTime = scheduleTime.add(const Duration(hours: 1));
     }
     flutterLocalNotificationsPlugin.zonedSchedule(
       3,
-      'ايه الاخبار ي صديقي',
+      'ايه الاخبار ي هندسه',
       "متنساش تشوف تاسكاتك اليويميه ",
       scheduleTime,
       details,
