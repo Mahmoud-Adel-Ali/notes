@@ -1,16 +1,41 @@
-# notes
+# 📝 Notes App
 
-A new Flutter project.
+A clean and minimal Flutter application for managing and organizing personal notes with notification support, local storage, and offline capabilities.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+- 📥 Save, edit, and delete notes locally using Hive
+- 🕒 Schedule and show local notifications
+- 📦 Offline-first architecture using local storage
+- ⏰ Background task support via WorkManager
+- 🌐 Timezone-aware scheduling
+- 🧱 Clean architecture with BLoC state management
+- 🎨 Beautiful and responsive UI using custom fonts and assets
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ Tech Stack
+
+- **Flutter** 💙
+- **BLoC** – State Management
+- **Hive** – Lightweight key-value database
+- **WorkManager** – Background task management
+- **Flutter Local Notifications** – Scheduled alerts
+- **Intl** – Date and time formatting
+- **Timezone** – Handling time zones accurately
+- **Modal Progress HUD** – For loading indicators
+
+---
+
+## 📁 Folder Structure
+
+```bash
+lib/
+├── blocs/           # BLoC logic and states
+├── models/          # Hive data models
+├── screens/         # UI screens
+├── services/        # Notification & background service handlers
+├── widgets/         # Reusable UI components
+├── main.dart        # Entry point
