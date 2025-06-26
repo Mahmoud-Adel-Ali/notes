@@ -1,31 +1,47 @@
 # 📝 Notes App
 
-A clean and minimal Flutter application for managing and organizing personal notes with notification support, local storage, and offline capabilities.
+A sleek and efficient **Flutter application** for creating, managing, and organizing personal notes. Built with **Hive** for offline local storage, **BLoC** for scalable state management, and supports **scheduled local notifications** using WorkManager and timezone-aware scheduling.
 
 ---
 
-## 🚀 Features
+---
 
-- 📥 Save, edit, and delete notes locally using Hive
-- 🕒 Schedule and show local notifications
-- 📦 Offline-first architecture using local storage
-- ⏰ Background task support via WorkManager
-- 🌐 Timezone-aware scheduling
-- 🧱 Clean architecture with BLoC state management
-- 🎨 Beautiful and responsive UI using custom fonts and assets
+## ✨ Features
+
+- ✅ Create, edit, and delete notes
+- ✅ Offline-first architecture using Hive local database
+- ✅ Schedule reminders with local notifications
+- ✅ Background task support via WorkManager
+- ✅ Custom notification sound & timezone support
+- ✅ Clean UI with custom fonts and responsive design
+- ✅ State management using the BLoC pattern
 
 ---
 
-## 🛠️ Tech Stack
+## 🧱 Architecture Overview
 
-- **Flutter** 💙
-- **BLoC** – State Management
-- **Hive** – Lightweight key-value database
-- **WorkManager** – Background task management
-- **Flutter Local Notifications** – Scheduled alerts
-- **Intl** – Date and time formatting
-- **Timezone** – Handling time zones accurately
-- **Modal Progress HUD** – For loading indicators
+This project follows a clean, layered architecture:
+
+- **Presentation Layer**: UI widgets & screens using `flutter_bloc`
+- **Business Logic Layer (BLoC)**: Event-driven state management
+- **Data Layer**: Hive for persistent local storage
+- **Services Layer**: Notifications, timezones, background workers
+
+---
+
+## 🧰 Tech Stack & Dependencies
+
+| Package | Purpose |
+|--------|--------|
+| [`flutter_bloc`](https://pub.dev/packages/flutter_bloc) | State management (BLoC) |
+| [`hive`](https://pub.dev/packages/hive) + [`hive_flutter`](https://pub.dev/packages/hive_flutter) | Local key-value database |
+| [`flutter_local_notifications`](https://pub.dev/packages/flutter_local_notifications) | Schedule local alerts |
+| [`workmanager`](https://pub.dev/packages/workmanager) | Run background tasks |
+| [`flutter_timezone`](https://pub.dev/packages/flutter_timezone) | Handle device timezones |
+| [`modal_progress_hud_nsn`](https://pub.dev/packages/modal_progress_hud_nsn) | Loading overlay widgets |
+| [`intl`](https://pub.dev/packages/intl) | Date/time formatting |
+| [`flutter_launcher_icons`](https://pub.dev/packages/flutter_launcher_icons) | App launcher customization |
+| `Poppins` Font | Smooth and modern UI typography |
 
 ---
 
@@ -39,3 +55,30 @@ lib/
 ├── services/        # Notification & background service handlers
 ├── widgets/         # Reusable UI components
 ├── main.dart        # Entry point
+
+---
+
+## 📦 Assets Used
+
+```bash
+assets/
+├── fonts/
+│   └── Poppins-Regular.ttf
+├── images/
+│   └── (add illustrations if any)
+├── sounds/
+│   └── notification_sound.mp3
+
+# Clone the project
+git clone https://github.com/Mahmoud-Adel-Ali/notes.git
+cd notes_app
+
+# Get dependencies
+flutter pub get
+
+# Generate Hive TypeAdapters
+flutter pub run build_runner build
+
+# Run the app
+flutter run
+
